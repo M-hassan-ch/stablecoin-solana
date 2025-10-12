@@ -18,4 +18,8 @@ pub mod stablecoin {
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
         initialize::handler(ctx)
     }
+
+    pub fn update_config(ctx: Context<UpdateConfig>, min_health_factor: u64) -> Result<()> {
+        update_config::handler(ctx, min_health_factor)
+    }
 }
