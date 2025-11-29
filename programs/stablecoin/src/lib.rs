@@ -2,12 +2,14 @@ pub mod constants;
 pub mod error;
 pub mod instructions;
 pub mod state;
+pub mod utils;
 
 use anchor_lang::prelude::*;
 
 pub use constants::*;
 pub use instructions::*;
 pub use state::*;
+pub use utils::*;
 
 declare_id!("FUwfGfnqeYr415mf1pD67Amr4nShs2JupVmpmFApYkeh");
 
@@ -21,5 +23,9 @@ pub mod stablecoin {
 
     pub fn update_config(ctx: Context<UpdateConfig>, min_health_factor: u64) -> Result<()> {
         update_config::handler(ctx, min_health_factor)
+    }
+
+    pub fn deposit_collateral(ctx: Context<DepositCollateral>, amount_collateral: u64, amount_to_mint: u64) -> Result<()>{
+        deposit_collateral::handler(ctx, amount_collateral, amount_to_mint)
     }
 }
